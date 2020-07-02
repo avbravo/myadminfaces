@@ -15,6 +15,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <jakartaee>8.0</jakartaee>
         <version.payara>5.201</version.payara>
+        <adminfaces.version>1.1.0</adminfaces.version>
     </properties>
     
     <dependencies>
@@ -34,10 +35,45 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!--
+                Adminfaces>
+        -->
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+         
+        <dependency>
+            <groupId>com.github.adminfaces</groupId>
+            <artifactId>admin-template</artifactId>
+            <version>1.1.2-SNAPSHOT</version>
+            <!-- end::dep-admin-template[] -->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.adminfaces</groupId>
+                    <artifactId>admin-theme</artifactId>
+                </exclusion>
+            </exclusions>
+            <!--<classifier>legacy</classifier> PrimeFaces 6.1 and below -->
+        </dependency>
+                
+                
+        <dependency>
+            <groupId>com.github.adminfaces</groupId>
+            <artifactId>admin-theme</artifactId>
+            <version>${adminfaces.version}</version>
+            <!-- end::dep-admin-theme[] -->
+            <classifier>no-cache</classifier>
+        </dependency>
+         
+         
+         
     </dependencies>
     
-     <build>
-         <finalName>myadminfaces</finalName>
+    <build>
+        <finalName>myadminfaces</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
